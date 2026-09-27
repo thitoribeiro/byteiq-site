@@ -1,26 +1,326 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  ByteIQ Design System tokens (source of truth: byteiq-master-branding).
+  Light is the institutional default for the marketing site — dark is reserved
+  for dashboards / dev tools / AI interfaces, not this site.
+  Do not hand-edit hex values here; they mirror 02_DESIGN_SYSTEM/tokens/*.json.
+*/
+
+@theme {
+  --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --color-blue-50: #EDF4FF;
+  --color-blue-100: #D9E7FD;
+  --color-blue-200: #B5CFFB;
+  --color-blue-300: #86B0F6;
+  --color-blue-400: #4C8CEB;
+  --color-blue-500: #2F79E4;
+  --color-blue-600: #1769E0;
+  --color-blue-700: #1354B5;
+  --color-blue-800: #124491;
+  --color-blue-900: #12386F;
+  --color-blue-950: #0B2247;
+
+  --color-navy-50: #F0F4F9;
+  --color-navy-100: #DDE6F1;
+  --color-navy-200: #B9C9DE;
+  --color-navy-300: #8AA2C2;
+  --color-navy-400: #5A78A0;
+  --color-navy-500: #3A5A85;
+  --color-navy-600: #274669;
+  --color-navy-700: #1B3555;
+  --color-navy-800: #152C48;
+  --color-navy-900: #10243E;
+  --color-navy-925: #0D1A2E;
+  --color-navy-950: #0A0F1C;
+
+  --color-gray-50: #F7F9FC;
+  --color-gray-75: #F0F3F9;
+  --color-gray-100: #E9EEF5;
+  --color-gray-200: #D9E0EA;
+  --color-gray-300: #BCC6D4;
+  --color-gray-400: #8E9AAE;
+  --color-gray-450: #7B879B;
+  --color-gray-500: #5F6B80;
+  --color-gray-600: #4B5A70;
+  --color-gray-700: #344257;
+  --color-gray-800: #243447;
+  --color-gray-900: #182535;
+
+  --color-cyan-50: #E8FAFD;
+  --color-cyan-100: #C9F2F8;
+  --color-cyan-200: #94E5F0;
+  --color-cyan-300: #5CD6E7;
+  --color-cyan-400: #2DC6DD;
+  --color-cyan-500: #13B8D1;
+  --color-cyan-600: #0E9BB2;
+  --color-cyan-700: #0C7C8F;
+  --color-cyan-800: #0D6373;
+  --color-cyan-900: #0E505E;
+
+  --color-violet-50: #F3F0FE;
+  --color-violet-100: #E8E3FD;
+  --color-violet-200: #D3C9FB;
+  --color-violet-300: #B5A5F6;
+  --color-violet-400: #9581F0;
+  --color-violet-500: #7257E8;
+  --color-violet-600: #5D42D0;
+  --color-violet-700: #4B34AB;
+  --color-violet-800: #3D2C8A;
+  --color-violet-900: #2F2369;
+
+  --color-red-50: #FEF3F2;
+  --color-red-600: #D92D20;
+  --color-red-700: #B42318;
+
+  /* Semantic roles — the only tokens components should reach for. */
+  --color-bg: #FFFFFF;
+  --color-bg-subtle: var(--color-gray-50);
+  --color-surface: #FFFFFF;
+  --color-surface-sunken: var(--color-gray-75);
+  --color-primary: var(--color-navy-900);
+  --color-secondary: var(--color-gray-600);
+  --color-muted: var(--color-gray-500);
+  --color-border: var(--color-gray-200);
+  --color-border-strong: var(--color-gray-450);
+  --color-focus: var(--color-blue-600);
+
+  --color-brand: var(--color-blue-600);
+  --color-brand-hover: var(--color-blue-700);
+  --color-brand-active: var(--color-blue-800);
+  --color-brand-subtle: var(--color-blue-50);
+  --color-brand-text: var(--color-blue-700);
+
+  --color-ai: var(--color-violet-500);
+  --color-ai-subtle: var(--color-violet-50);
+  --color-ai-border: var(--color-violet-200);
+  --color-ai-text: var(--color-violet-700);
+
+  --color-data: var(--color-cyan-600);
+  --color-data-subtle: var(--color-cyan-50);
+  --color-data-text: var(--color-cyan-800);
+
+  --color-error: var(--color-red-600);
+  --color-error-subtle: var(--color-red-50);
+  --color-error-text: var(--color-red-700);
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+
+  --shadow-e1: 0 1px 2px rgba(16, 36, 62, 0.06);
+  --shadow-e2: 0 1px 3px rgba(16, 36, 62, 0.08), 0 1px 2px rgba(16, 36, 62, 0.04);
+  --shadow-e3: 0 4px 12px rgba(16, 36, 62, 0.08), 0 2px 4px rgba(16, 36, 62, 0.04);
+  --shadow-e4: 0 12px 24px rgba(16, 36, 62, 0.10), 0 4px 8px rgba(16, 36, 62, 0.05);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-brand-subtle);
+    color: var(--color-brand-text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Overline label — the one place uppercase/tracked type is sanctioned. Use sparingly. */
+.text-overline {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/*
+  Site-wide interaction timing system. Three speeds, ease-out — reused by
+  every hover/press effect below instead of one-off durations per component.
+*/
+:root {
+  --transition-fast: 150ms;
+  --transition-normal: 200ms;
+  --transition-slow: 300ms;
+}
+
+/*
+  Animated underline for inline text links (breadcrumbs, "ver mais"-style
+  links) — expands from the left on hover, restrained, brand-colored.
+  Buttons keep their own hover treatment (background/border), not this.
+*/
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -2px;
+  height: 1px;
+  background-color: currentColor;
+  transition: right var(--transition-normal) ease-out;
+}
+.link-underline:hover::after {
+  right: 0;
+}
+
+/* Whole-block clickable cards: a slight lift, never a scale or a glow. */
+.card-interactive {
+  transition: transform var(--transition-normal) ease-out, box-shadow var(--transition-normal) ease-out;
+}
+.card-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-e3);
+}
+
+/*
+  Global reduced-motion safety net — the same pattern the official design
+  system's own base.css ships (04_CODE/css/base.css): collapse every
+  animation/transition to effectively instant rather than hunting each one.
+  Explicit hover/active transform resets below cover cases (a translateY
+  lift, an icon shift) where "instant" would otherwise still apply the
+  moved state — those must not move at all under reduced motion.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+  Hero motion — scoped to the Hero's large B mark and content reveal only.
+  The mark is a flat asset, so rotating it a full 360° passes through an
+  edge-on sliver twice per cycle — that foreshortening is the intended 3D
+  read (narrows to the side, returns to full face), not a bug. Backface
+  visibility is deliberately left at its default (visible, mirrored) rather
+  than hidden, so the symbol never disappears mid-rotation.
+
+  The rotation itself is scroll-driven, not time-based: components/home/
+  HeroSymbol.tsx writes --hero-symbol-rotation directly (rAF-throttled scroll
+  listener, no React state), so there is no @keyframes animation here — the
+  `0deg` fallback is what renders before JS runs and under reduced motion.
+*/
+@keyframes hero-symbol-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-symbol-enter {
+  animation: hero-symbol-enter 800ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.hero-symbol-rotate {
+  transform-style: preserve-3d;
+  transform: rotateY(var(--hero-symbol-rotation, 0deg));
+}
+
+.hero-reveal {
+  animation: hero-reveal 700ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-symbol-enter,
+  .hero-symbol-rotate,
+  .hero-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-cta:hover {
+    /* Tailwind v4's translate utilities set the standalone CSS `translate`
+       property, not `transform` — this must match that property or the
+       reduced-motion override silently does nothing (found while testing
+       this task's own button/reduced-motion work). */
+    translate: none !important;
+  }
+}
+
+/*
+  Scroll reveal system (components/motion/Reveal.tsx). Server-rendered
+  content carries these classes from the first paint, so a `<noscript>`
+  override in layout.tsx forces full visibility when JS never runs — the
+  IntersectionObserver only ever adds `.is-visible`, never hides anything
+  itself. Only opacity/transform animate (no layout properties).
+*/
+.reveal {
+  opacity: 0;
+  /* Deliberately its own tier (600ms), slower than the interaction system's
+     "slow" (300ms) — scroll reveals read as editorial, not a UI response. */
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+.reveal-up { transform: translateY(16px); }
+.reveal-up-sm { transform: translateY(8px); }
+.reveal-left { transform: translateX(-16px); }
+.reveal-right { transform: translateX(16px); }
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Custom scrollbar, light */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
 }
