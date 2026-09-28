@@ -72,7 +72,7 @@ export default function ContactPage() {
               <div className="font-medium text-primary">ByteIQ Tecnologia</div>
               <div>AI Engineering &amp; Software Development</div>
               <div>São Paulo, Brasil — Atendimento Global</div>
-              <div>www.byteiq.com.br</div>
+              <div>www.byteiq.tech</div>
               {CONTACT.email && (
                 <div>
                   <a href={`mailto:${CONTACT.email}`} className="hover:text-primary transition-colors">

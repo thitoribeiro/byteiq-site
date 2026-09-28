@@ -3,7 +3,7 @@
  * Centralized so the domain and contact info are never duplicated across
  * metadata exports, sitemap.ts, robots.ts, the footer, etc.
  */
-export const SITE_URL = "https://www.byteiq.com.br";
+export const SITE_URL = "https://www.byteiq.tech";
 
 export function absoluteUrl(path: string = "/"): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;

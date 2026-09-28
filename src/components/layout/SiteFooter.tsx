@@ -19,7 +19,7 @@ export function SiteFooter() {
             </p>
             <div className="pt-2 text-sm text-navy-400 space-y-1">
               <div>São Paulo, Brasil — Atendimento Global</div>
-              <div>www.byteiq.com.br</div>
+              <div>www.byteiq.tech</div>
             </div>
           </div>
 
