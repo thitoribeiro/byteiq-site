@@ -36,7 +36,7 @@ export function HeroSymbol() {
       ticking = false;
       const progress =
         heroHeight > 0 ? Math.min(1, Math.max(0, (window.scrollY - heroTop) / heroHeight)) : 0;
-      rotor.style.setProperty("--hero-symbol-rotation", `${progress * 360}deg`);
+      rotor.style.setProperty("--hero-symbol-rotation", `${progress * 90}deg`);
     };
 
     const onScroll = () => {
