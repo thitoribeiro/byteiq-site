@@ -48,7 +48,7 @@ export function Hero() {
             className="hero-reveal mt-5 text-[2.75rem] leading-[1.05] sm:text-6xl sm:leading-[1.05] lg:text-7xl lg:leading-[1.03] font-bold tracking-tight text-primary text-balance"
             style={{ animationDelay: "80ms" }}
           >
-            Tecnologia, projetada <span className="text-brand">com intenção.</span>
+            Tecnologia, projetada <span className="text-brand">com intenção e inteligência.</span>
           </h1>
 
           <p

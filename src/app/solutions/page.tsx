@@ -2,15 +2,26 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/brand/Icon";
-import type { IconName } from "@/components/brand/Icon";
 import { absoluteUrl } from "@/lib/site";
+import { OG_IMAGE } from "@/app/layout";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { CTABanner } from "@/components/layout/CTABanner";
+
+const TITLE = "Soluções de Engenharia";
+const DESCRIPTION =
+  "Explore as capacidades de engenharia de software, inteligência artificial, automação e consultoria técnica da ByteIQ.";
 
 export const metadata: Metadata = {
-  title: "Soluções de Engenharia",
-  description:
-    "Explore as capacidades de engenharia de software, inteligência artificial, automação e consultoria técnica da ByteIQ.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: absoluteUrl("/solutions"),
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: absoluteUrl("/solutions"),
+    images: [OG_IMAGE],
   },
 };
 
@@ -21,7 +32,6 @@ const solutionsList: {
   desc: string;
   deliverables: string[];
   href: string;
-  icon: IconName;
 }[] = [
   {
     slug: "ai-agents",
@@ -35,7 +45,6 @@ const solutionsList: {
       "Sistemas de Avaliação de Modelos (Eval)",
     ],
     href: "/solutions/ai-agents",
-    icon: "ai-spark",
   },
   {
     slug: "software-engineering",
@@ -49,7 +58,6 @@ const solutionsList: {
       "Aplicativos Móveis iOS & Android",
     ],
     href: "/solutions/software-engineering",
-    icon: "code",
   },
   {
     slug: "automation",
@@ -63,7 +71,6 @@ const solutionsList: {
       "Esteiras de Dados Contínuas (ETL/ELT)",
     ],
     href: "/solutions/automation",
-    icon: "workflow",
   },
   {
     slug: "quality-engineering",
@@ -77,7 +84,6 @@ const solutionsList: {
       "Benchmarking Contínuo de Latência e Custo",
     ],
     href: "/solutions/quality-engineering",
-    icon: "shield",
   },
   {
     slug: "technology-consulting",
@@ -91,7 +97,6 @@ const solutionsList: {
       "Estratégia de Integração de Modelos de IA",
     ],
     href: "/solutions/technology-consulting",
-    icon: "target",
   },
 ];
 
@@ -100,11 +105,7 @@ export default function SolutionsHubPage() {
     <div className="pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pb-12 mb-16 border-b border-border">
-          <div className="flex items-center gap-2 text-sm text-muted mb-4">
-            <Link href="/" className="link-underline hover:text-primary transition-colors">ByteIQ</Link>
-            <span>/</span>
-            <span className="text-secondary">Soluções</span>
-          </div>
+          <Breadcrumb items={[{ label: "ByteIQ", href: "/" }, { label: "Soluções" }]} className="mb-4" />
           <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
             Soluções de engenharia &amp; software.
           </h1>
@@ -115,10 +116,12 @@ export default function SolutionsHubPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-14">
-          {solutionsList.map((sol) => (
+          {solutionsList.map((sol, index) => (
             <div key={sol.slug} className="border-t border-border pt-8">
-              <Icon name={sol.icon} size={24} className="text-brand mb-4" />
-              <span className="text-sm text-muted">{sol.category}</span>
+              <span className="text-2xl font-semibold tracking-tight text-brand-text">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className="mt-4 text-sm text-muted">{sol.category}</div>
               <h2 className="mt-1 text-xl font-semibold text-primary tracking-tight">{sol.title}</h2>
               <p className="mt-3 text-sm text-secondary leading-relaxed">{sol.desc}</p>
 
@@ -146,22 +149,12 @@ export default function SolutionsHubPage() {
           ))}
         </div>
 
-        <div className="mt-16 p-8 sm:p-10 rounded-xl bg-bg-subtle flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-lg font-semibold text-primary">
-              Precisa de uma combinação personalizada de soluções?
-            </h3>
-            <p className="mt-1 text-sm text-secondary">
-              Desenhamos arquiteturas integradas que combinam IA, software web e automação contínua.
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center h-11 px-6 bg-brand text-white font-medium text-sm rounded-md transition-all duration-200 ease-out hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 motion-reduce:hover:translate-y-0 shrink-0"
-          >
-            Falar com a Engenharia
-          </Link>
-        </div>
+        <CTABanner
+          title="Precisa de uma combinação personalizada de soluções?"
+          subtitle="Desenhamos arquiteturas integradas que combinam IA, software web e automação contínua."
+          ctaLabel="Falar com a Engenharia"
+          ctaHref="/contact"
+        />
       </div>
     </div>
   );

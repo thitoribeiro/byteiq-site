@@ -10,31 +10,31 @@ import { cn } from "@/lib/utils";
 
 const solutions: { title: string; description: string; href: string; icon: IconName }[] = [
   {
-    title: "AI Agents & Autonomous Systems",
+    title: "Agentes de IA & Sistemas Autônomos",
     description: "Sistemas multiagentes, automação determinística e pipelines RAG híbridos.",
     href: "/solutions/ai-agents",
     icon: "ai-spark",
   },
   {
-    title: "Software Engineering",
+    title: "Software & Aplicações Web",
     description: "Aplicações web escaláveis, sistemas SaaS e backends de alta performance.",
     href: "/solutions/software-engineering",
     icon: "code",
   },
   {
-    title: "Intelligent Automation",
+    title: "Automação Inteligente",
     description: "Orquestração de processos de ponta a ponta e integração avançada de APIs.",
     href: "/solutions/automation",
     icon: "workflow",
   },
   {
-    title: "Quality Engineering",
+    title: "Engenharia de Qualidade",
     description: "Testes automatizados, observabilidade contínua e validação de LLMs.",
     href: "/solutions/quality-engineering",
     icon: "shield",
   },
   {
-    title: "Technology Consulting",
+    title: "Consultoria em Tecnologia",
     description: "Arquitetura estratégica de sistemas, diagnóstico e viabilidade técnica.",
     href: "/solutions/technology-consulting",
     icon: "target",

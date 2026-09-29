@@ -1,16 +1,26 @@
 import React from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Icon } from "@/components/brand/Icon";
 import { absoluteUrl, CONTACT } from "@/lib/site";
+import { OG_IMAGE } from "@/app/layout";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { ContactForm } from "./ContactForm";
 
+const TITLE = "Contato";
+const DESCRIPTION =
+  "Inicie um projeto de engenharia com a ByteIQ. Compartilhe o sistema, software ou desafio de inteligência artificial que sua empresa deseja construir.";
+
 export const metadata: Metadata = {
-  title: "Contato",
-  description:
-    "Inicie um projeto de engenharia com a ByteIQ. Compartilhe o sistema, software ou desafio de inteligência artificial que sua empresa deseja construir.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: absoluteUrl("/contact"),
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: absoluteUrl("/contact"),
+    images: [OG_IMAGE],
   },
 };
 
@@ -18,11 +28,7 @@ export default function ContactPage() {
   return (
     <div className="pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 text-sm text-muted mb-4">
-          <Link href="/" className="hover:text-primary transition-colors">ByteIQ</Link>
-          <span>/</span>
-          <span className="text-secondary">Contato</span>
-        </div>
+        <Breadcrumb items={[{ label: "ByteIQ", href: "/" }, { label: "Contato" }]} className="mb-4" />
 
         <div className="pb-12 mb-16 border-b border-border">
           <span className="text-overline text-muted">Início de Projeto</span>
@@ -46,9 +52,9 @@ export default function ContactPage() {
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
               <span className="text-overline text-muted">Avaliação Técnica Direta</span>
-              <h3 className="text-lg font-semibold text-primary tracking-tight">
+              <h2 className="text-2xl font-semibold text-primary tracking-tight">
                 O que esperar do contato
-              </h3>
+              </h2>
               <p className="text-sm text-secondary leading-relaxed">
                 Ao enviar seu briefing, ele é analisado diretamente pela liderança de engenharia da
                 ByteIQ para avaliação precisa de escopo e viabilidade.

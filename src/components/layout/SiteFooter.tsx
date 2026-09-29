@@ -28,27 +28,27 @@ export function SiteFooter() {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link href="/solutions/ai-agents" className="text-navy-300 hover:text-white transition-colors">
-                  AI Agents &amp; Autonomous Systems
+                  Agentes de IA &amp; Sistemas Autônomos
                 </Link>
               </li>
               <li>
                 <Link href="/solutions/software-engineering" className="text-navy-300 hover:text-white transition-colors">
-                  Software &amp; Web Applications
+                  Software &amp; Aplicações Web
                 </Link>
               </li>
               <li>
                 <Link href="/solutions/automation" className="text-navy-300 hover:text-white transition-colors">
-                  Intelligent Automation
+                  Automação Inteligente
                 </Link>
               </li>
               <li>
                 <Link href="/solutions/quality-engineering" className="text-navy-300 hover:text-white transition-colors">
-                  Quality Engineering
+                  Engenharia de Qualidade
                 </Link>
               </li>
               <li>
                 <Link href="/solutions/technology-consulting" className="text-navy-300 hover:text-white transition-colors">
-                  Technology Consulting
+                  Consultoria em Tecnologia
                 </Link>
               </li>
             </ul>

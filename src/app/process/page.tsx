@@ -1,14 +1,25 @@
 import React from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { absoluteUrl } from "@/lib/site";
+import { OG_IMAGE } from "@/app/layout";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { CTABanner } from "@/components/layout/CTABanner";
+
+const TITLE = "Metodologia & Processo de Engenharia";
+const DESCRIPTION =
+  "Conheça o ciclo estruturado de 5 fases da ByteIQ: Discover, Architect, Build, Validate e Evolve.";
 
 export const metadata: Metadata = {
-  title: "Metodologia & Processo de Engenharia",
-  description:
-    "Conheça o ciclo estruturado de 5 fases da ByteIQ: Discover, Architect, Build, Validate e Evolve.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: absoluteUrl("/process"),
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: absoluteUrl("/process"),
+    images: [OG_IMAGE],
   },
 };
 
@@ -82,13 +93,19 @@ const fullProcessSteps = [
 
 export default function ProcessPage() {
   return (
-    <div className="pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
+    <div className="relative overflow-hidden pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.05]"
+        style={{
+          backgroundImage: "url(/brand/blueprint-light.svg)",
+          backgroundSize: "1400px",
+          backgroundPosition: "top right",
+          backgroundRepeat: "no-repeat",
+        }}
+        aria-hidden="true"
+      />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 text-sm text-muted mb-4">
-          <Link href="/" className="link-underline hover:text-primary transition-colors">ByteIQ</Link>
-          <span>/</span>
-          <span className="text-secondary">Processo</span>
-        </div>
+        <Breadcrumb items={[{ label: "ByteIQ", href: "/" }, { label: "Processo" }]} className="mb-4" />
 
         <div className="pb-12 border-b border-border mb-16">
           <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
@@ -136,20 +153,12 @@ export default function ProcessPage() {
           ))}
         </div>
 
-        <div className="mt-16 p-8 sm:p-10 rounded-xl bg-bg-subtle flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-lg font-semibold text-primary">
-              Pronto para iniciar a Fase 01 (Discover) do seu projeto?
-            </h3>
-            <p className="mt-1 text-sm text-secondary">Converse diretamente com um líder técnico da ByteIQ.</p>
-          </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center h-11 px-6 bg-brand text-white font-medium text-sm rounded-md transition-all duration-200 ease-out hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 motion-reduce:hover:translate-y-0 shrink-0"
-          >
-            Iniciar Discover
-          </Link>
-        </div>
+        <CTABanner
+          title="Pronto para iniciar a Fase 01 (Discover) do seu projeto?"
+          subtitle="Converse diretamente com um líder técnico da ByteIQ."
+          ctaLabel="Iniciar Discover"
+          ctaHref="/contact"
+        />
       </div>
     </div>
   );
