@@ -24,7 +24,7 @@ export function SiteFooter() {
           </div>
 
           <div className="lg:col-span-3 space-y-3">
-            <div className="text-sm font-semibold text-white">Soluções</div>
+            <div className="text-sm font-semibold text-white">Capacidades</div>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link href="/solutions/ai-agents" className="text-navy-300 hover:text-white transition-colors">
@@ -64,7 +64,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link href="/portfolio" className="text-navy-300 hover:text-white transition-colors">
-                  Portfólio
+                  Trabalho
                 </Link>
               </li>
               <li>
@@ -74,7 +74,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link href="/process" className="text-navy-300 hover:text-white transition-colors">
-                  Processo
+                  Abordagem
                 </Link>
               </li>
               <li>
@@ -122,7 +122,7 @@ export function SiteFooter() {
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-navy-400">
           <div>&copy; {currentYear} ByteIQ Tecnologia. Todos os direitos reservados.</div>
-          <div>AI Engineering &amp; Software Development</div>
+          <div>Tecnologia &amp; Engenharia de Software</div>
         </div>
       </div>
     </footer>

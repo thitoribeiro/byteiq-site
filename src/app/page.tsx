@@ -1,8 +1,6 @@
 import { Hero } from "@/components/home/Hero";
 import { PositioningTree } from "@/components/home/PositioningTree";
-import { AiEngineeringSection } from "@/components/home/AiEngineeringSection";
-import { AutomationSection } from "@/components/home/AutomationSection";
-import { SoftwareSection } from "@/components/home/SoftwareSection";
+import { CapabilitiesSection } from "@/components/home/CapabilitiesSection";
 import { PortfolioSection } from "@/components/home/PortfolioSection";
 import { EngineeringPrinciplesSection } from "@/components/home/EngineeringPrinciplesSection";
 import { TechnologiesSection } from "@/components/home/TechnologiesSection";
@@ -14,9 +12,7 @@ export default function HomePage() {
     <>
       <Hero />
       <PositioningTree />
-      <AiEngineeringSection />
-      <AutomationSection />
-      <SoftwareSection />
+      <CapabilitiesSection />
       <PortfolioSection />
       <EngineeringPrinciplesSection />
       <TechnologiesSection />

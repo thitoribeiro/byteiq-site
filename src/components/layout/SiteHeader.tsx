@@ -42,9 +42,8 @@ const solutions: { title: string; description: string; href: string; icon: IconN
 ];
 
 const navLinks = [
-  { href: "/technologies", label: "Tecnologias" },
-  { href: "/portfolio", label: "Portfólio" },
-  { href: "/process", label: "Processo" },
+  { href: "/portfolio", label: "Trabalho" },
+  { href: "/process", label: "Abordagem" },
   { href: "/about", label: "Sobre" },
 ];
 
@@ -93,7 +92,7 @@ export function SiteHeader() {
                     : "text-secondary hover:text-primary"
                 )}
               >
-                <span>Soluções</span>
+                <span>Capacidades</span>
                 <Icon
                   name="chevron-down"
                   size={14}
@@ -105,7 +104,7 @@ export function SiteHeader() {
                 <div className="absolute top-full left-0 pt-2 w-[380px]">
                   <div className="p-2 bg-surface border border-border rounded-lg shadow-e3">
                     <div className="px-3 py-2 flex items-center justify-between">
-                      <span className="text-overline text-muted">Soluções de Engenharia</span>
+                      <span className="text-overline text-muted">Capacidades de Engenharia</span>
                       <Link
                         href="/solutions"
                         onClick={closeMenus}
@@ -161,7 +160,7 @@ export function SiteHeader() {
               onClick={closeMenus}
               className="hidden sm:inline-flex items-center gap-2 h-10 px-4 text-sm font-medium text-white bg-brand rounded-md transition-all duration-200 ease-out hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 motion-reduce:hover:translate-y-0"
             >
-              Iniciar Projeto
+              Iniciar uma Conversa
             </Link>
 
             <button
@@ -179,7 +178,7 @@ export function SiteHeader() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-bg border-t border-border px-4 pt-4 pb-6 space-y-1">
           <div className="pl-3 border-l border-border space-y-2 py-2 mb-1">
-            <div className="text-overline text-muted">Soluções</div>
+            <div className="text-overline text-muted">Capacidades</div>
             {solutions.map((item) => (
               <Link
                 key={item.href}
@@ -213,7 +212,7 @@ export function SiteHeader() {
               onClick={closeMenus}
               className="flex items-center justify-center w-full h-11 px-4 font-medium text-sm text-white bg-brand rounded-md"
             >
-              Iniciar Projeto
+              Iniciar uma Conversa
             </Link>
           </div>
         </div>

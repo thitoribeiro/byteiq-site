@@ -32,8 +32,8 @@ export function TechnologiesSection() {
             Tecnologias de produção.
           </h2>
           <p className="mt-6 text-base sm:text-lg text-secondary leading-relaxed">
-            Componentes selecionados por estabilidade operacional, maturidade em produção e eficiência
-            computacional.
+            Tecnologia é credibilidade, não decoração — cada componente é escolhido por maturidade em
+            produção, não por tendência.
           </p>
         </Reveal>
 

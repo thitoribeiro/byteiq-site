@@ -3,13 +3,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/brand/Icon";
 import { absoluteUrl } from "@/lib/site";
+import { OG_IMAGE } from "@/app/layout";
+
+const TITLE = "Portfólio de Sistemas & Produtos";
+const DESCRIPTION =
+  "Estrutura e catálogo de sistemas de software, produtos de inteligência artificial, plataformas SaaS e soluções de automação projetadas pela ByteIQ.";
 
 export const metadata: Metadata = {
-  title: "Portfólio de Sistemas & Produtos",
-  description:
-    "Estrutura e catálogo de sistemas de software, produtos de inteligência artificial, plataformas SaaS e soluções de automação projetadas pela ByteIQ.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: absoluteUrl("/portfolio"),
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: absoluteUrl("/portfolio"),
+    images: [OG_IMAGE],
   },
 };
 
@@ -71,7 +81,7 @@ const portfolioProjects = [
 export default function PortfolioPage() {
   return (
     <div className="pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 text-sm text-muted mb-4">
           <Link href="/" className="link-underline hover:text-primary transition-colors">ByteIQ</Link>
           <span>/</span>
@@ -79,7 +89,8 @@ export default function PortfolioPage() {
         </div>
 
         <div className="pb-12 border-b border-border mb-16">
-          <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
+          <span className="text-overline text-muted">Trabalho Selecionado</span>
+          <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
             O que construímos.
           </h1>
           <p className="mt-4 text-base sm:text-lg text-secondary max-w-2xl leading-relaxed">
@@ -88,23 +99,21 @@ export default function PortfolioPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-14">
+        <div>
           {portfolioProjects.map((proj) => (
-            <div key={proj.id} className="border-t border-border pt-8 flex flex-col">
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="text-sm font-medium text-brand-text">{proj.tag}</span>
-                <span className="text-sm text-muted">{proj.id}</span>
+            <div key={proj.id} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 py-12 border-t border-border first:border-t-0">
+              <div className="lg:col-span-2">
+                <span className="text-3xl font-semibold tracking-tight text-brand-text">{proj.id}</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-semibold text-primary tracking-tight mb-3">
-                {proj.title}
-              </h2>
+              <div className="lg:col-span-10">
+                <span className="text-sm font-medium text-muted">{proj.tag}</span>
+                <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-primary tracking-tight text-balance">
+                  {proj.title}
+                </h2>
+                <p className="mt-4 text-base text-secondary leading-relaxed max-w-2xl">{proj.scope}</p>
 
-              <p className="text-sm sm:text-base text-secondary leading-relaxed mb-6">{proj.scope}</p>
-
-              <div className="space-y-2.5 mb-6">
-                <div className="text-sm font-medium text-muted">Capacidades do Sistema</div>
-                <ul className="space-y-1.5">
+                <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
                   {proj.capabilities.map((cap) => (
                     <li key={cap} className="flex items-start gap-2 text-sm text-secondary">
                       <span className="w-1 h-1 rounded-full bg-muted mt-2 shrink-0" />
@@ -112,12 +121,13 @@ export default function PortfolioPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              <div className="mt-auto pt-5 border-t border-border">
-                <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-sm text-muted">
-                  {proj.stack.map((tech) => (
-                    <span key={tech}>{tech}</span>
+                <div className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm text-muted">
+                  {proj.stack.map((tech, techIndex) => (
+                    <React.Fragment key={tech}>
+                      {techIndex > 0 && <span aria-hidden="true">·</span>}
+                      <span>{tech}</span>
+                    </React.Fragment>
                   ))}
                 </div>
               </div>

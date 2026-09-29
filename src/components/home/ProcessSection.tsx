@@ -20,6 +20,7 @@ export function ProcessSection() {
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-primary text-balance">
             Engenharia em 5 fases.
           </h2>
+          <p className="mt-4 text-base sm:text-lg text-secondary">Da complexidade à clareza.</p>
         </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-5 gap-8 sm:gap-6">

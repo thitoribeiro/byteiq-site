@@ -2,38 +2,70 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { absoluteUrl } from "@/lib/site";
+import { OG_IMAGE } from "@/app/layout";
+
+const TITLE = "Sobre a ByteIQ";
+const DESCRIPTION =
+  "A ByteIQ é uma empresa de tecnologia orientada à engenharia, focada em Engenharia de IA, desenvolvimento de software e infraestrutura de sistemas inteligentes.";
 
 export const metadata: Metadata = {
-  title: "Sobre a ByteIQ",
-  description:
-    "A ByteIQ é uma empresa de tecnologia orientada à engenharia, focada em Engenharia de IA, desenvolvimento de software e infraestrutura de sistemas inteligentes.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: absoluteUrl("/about"),
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: absoluteUrl("/about"),
+    images: [OG_IMAGE],
   },
 };
 
 const studioPillars = [
   {
+    num: "01",
     title: "Engenharia sobre Hype",
     desc: "Não tratamos inteligência artificial como acessório de marketing. IA é uma camada crítica de computação que requer arquiteturas determinísticas, contratos estritos de dados e observabilidade contínua.",
   },
   {
+    num: "02",
     title: "Sistemas & Pensamento Estrutural",
     desc: "Enxergamos cada produto digital como parte de um ecossistema conectado. Do banco de dados à interface do usuário, cada componente é desenhado com limites claros de responsabilidade.",
   },
   {
+    num: "03",
     title: "Precisão & Confiabilidade",
     desc: "Qualidade é inegociável. Aplicamos tipagem estrita, suítes completas de testes automatizados e monitoramento de telemetria em tempo real.",
   },
 ];
 
 const disciplines = [
-  { title: "AI Engineering", desc: "Agentes autônomos, sistemas multiagentes, RAG e orquestração de LLMs." },
-  { title: "Software Engineering", desc: "Aplicações web escaláveis, microsserviços e plataformas SaaS." },
-  { title: "Intelligent Automation", desc: "Orquestração de workflows, mensageria e integração de APIs." },
-  { title: "Quality Engineering", desc: "Testes automatizados, observabilidade e tracing distribuído." },
-  { title: "Cloud & Infrastructure", desc: "Infraestrutura como código, contêineres e segurança." },
-  { title: "Technology Consulting", desc: "Auditoria arquitetural, diagnóstico técnico e estratégia de IA." },
+  {
+    title: "AI Agents",
+    desc: "Agentes autônomos, sistemas multiagentes, RAG e orquestração de LLMs.",
+    href: "/solutions/ai-agents",
+  },
+  {
+    title: "Software Engineering",
+    desc: "Aplicações web escaláveis, microsserviços e plataformas SaaS.",
+    href: "/solutions/software-engineering",
+  },
+  {
+    title: "Automation",
+    desc: "Orquestração de workflows, mensageria e integração de APIs.",
+    href: "/solutions/automation",
+  },
+  {
+    title: "Quality Engineering",
+    desc: "Testes automatizados, observabilidade e tracing distribuído.",
+    href: "/solutions/quality-engineering",
+  },
+  {
+    title: "Technology Consulting",
+    desc: "Auditoria arquitetural, diagnóstico técnico, estratégia de IA e topologia de infraestrutura em nuvem.",
+    href: "/solutions/technology-consulting",
+  },
 ];
 
 export default function AboutPage() {
@@ -59,7 +91,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="space-y-16 pb-16 border-b border-border">
+        <div className="pb-16 border-b border-border">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-4">
               <span className="text-overline text-muted">Quem Somos</span>
@@ -82,25 +114,60 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4 border-t border-border">
+          <div className="mt-12 max-w-3xl">
             {studioPillars.map((pillar) => (
-              <div key={pillar.title} className="space-y-2">
-                <h3 className="text-base font-semibold text-primary tracking-tight">{pillar.title}</h3>
-                <p className="text-sm text-secondary leading-relaxed">{pillar.desc}</p>
+              <div key={pillar.num} className="pt-6 pb-6 border-t border-border first:border-t-0">
+                <div className="sm:flex sm:items-baseline sm:gap-8">
+                  <span className="text-sm text-muted shrink-0">{pillar.num}</span>
+                  <div className="mt-2 sm:mt-0">
+                    <h3 className="text-lg font-semibold text-primary tracking-tight">{pillar.title}</h3>
+                    <p className="mt-2 text-sm sm:text-base text-secondary leading-relaxed">{pillar.desc}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         <div className="py-16 border-b border-border space-y-8">
-          <span className="text-overline text-muted">Disciplinas Integradas</span>
+          <h2 className="text-overline text-muted">Disciplinas Integradas</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {disciplines.map((disc) => (
-              <div key={disc.title} className="space-y-1.5">
-                <div className="text-sm font-semibold text-primary">{disc.title}</div>
+              <Link
+                key={disc.title}
+                href={disc.href}
+                className="group space-y-1.5 link-underline"
+              >
+                <div className="text-sm font-semibold text-primary group-hover:text-brand-text transition-colors">
+                  {disc.title}
+                </div>
                 <p className="text-sm text-secondary leading-relaxed">{disc.desc}</p>
-              </div>
+              </Link>
             ))}
+          </div>
+        </div>
+
+        <div className="py-16 border-b border-border">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-4">
+              <span className="text-overline text-muted">Abordagem</span>
+              <h2 className="mt-2 text-2xl font-semibold text-primary tracking-tight">
+                Da complexidade à clareza.
+              </h2>
+            </div>
+            <div className="lg:col-span-8 space-y-4 text-sm sm:text-base text-secondary leading-relaxed">
+              <p>
+                Cada projeto segue uma metodologia estruturada em cinco fases — de descoberta a evolução
+                contínua — com entregáveis técnicos claros em cada etapa, em vez de escopos abertos e
+                prazos indefinidos.
+              </p>
+              <Link
+                href="/process"
+                className="link-underline inline-flex items-center gap-1.5 text-sm font-medium text-brand-text hover:text-brand-hover transition-colors"
+              >
+                Conhecer nossa metodologia
+              </Link>
+            </div>
           </div>
         </div>
 

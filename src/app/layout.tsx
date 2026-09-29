@@ -11,7 +11,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const OG_IMAGE = {
+export const OG_IMAGE = {
   url: absoluteUrl("/brand/og-image.png"),
   width: 1200,
   height: 630,
