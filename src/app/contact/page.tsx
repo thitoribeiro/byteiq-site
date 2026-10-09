@@ -26,7 +26,17 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
+    <div className="relative z-0 overflow-hidden pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
+      <div
+        className="absolute inset-x-0 top-0 -z-10 h-[520px] opacity-[0.05]"
+        style={{
+          backgroundImage: "url(/brand/grid-modules-light.svg)",
+          backgroundSize: "900px",
+          backgroundPosition: "top right",
+          backgroundRepeat: "no-repeat",
+        }}
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumb items={[{ label: "ByteIQ", href: "/" }, { label: "Contato" }]} className="mb-4" />
 
@@ -44,7 +54,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-xl border border-border bg-bg-subtle">
+            <div className="p-8 sm:p-10 rounded-xl bg-bg-subtle">
               <ContactForm />
             </div>
           </div>

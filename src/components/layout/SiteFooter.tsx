@@ -17,7 +17,7 @@ export function SiteFooter() {
               A ByteIQ projeta e constrói sistemas de software inteligentes, soluções de automação e
               infraestruturas digitais de alta confiabilidade.
             </p>
-            <div className="pt-2 text-sm text-navy-400 space-y-1">
+            <div className="pt-2 text-sm text-navy-300 space-y-1">
               <div>São Paulo, Brasil — Atendimento Global</div>
               <div>www.byteiq.tech</div>
             </div>
@@ -120,7 +120,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-navy-400">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-navy-300">
           <div>&copy; {currentYear} ByteIQ Tecnologia. Todos os direitos reservados.</div>
           <div>Tecnologia &amp; Engenharia de Software</div>
         </div>

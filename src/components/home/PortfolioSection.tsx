@@ -66,28 +66,42 @@ export function PortfolioSection() {
                     <p className="mt-4 text-base sm:text-lg text-secondary leading-relaxed max-w-xl">
                       {work.desc}
                     </p>
-                    <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm text-muted">
-                      {work.technologies.map((tech, techIndex) => (
-                        <React.Fragment key={tech}>
-                          {techIndex > 0 && <span aria-hidden="true">·</span>}
-                          <span>{tech}</span>
-                        </React.Fragment>
-                      ))}
+                    <div className="mt-6">
+                      <div className="text-sm font-medium text-muted mb-2">Componentes</div>
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                        {work.technologies.map((tech) => (
+                          <div key={tech} className="flex items-center gap-1.5">
+                            <span className="h-1.5 w-1.5 rounded-full bg-brand shrink-0" aria-hidden="true" />
+                            <span className="text-sm text-secondary">{tech}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  <div className={cn("lg:col-span-5 space-y-6", reversed && "lg:order-1")}>
-                    <div>
-                      <div className="text-sm font-medium text-muted mb-1.5">Desafio</div>
-                      <p className="text-sm text-secondary leading-relaxed">{work.problem}</p>
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-muted mb-1.5">Arquitetura</div>
-                      <p className="text-sm text-secondary leading-relaxed">{work.architecture}</p>
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-muted mb-1.5">Resultado</div>
-                      <p className="text-sm text-secondary leading-relaxed">{work.outcome}</p>
+                  <div className={cn("lg:col-span-5", reversed && "lg:order-1")}>
+                    <div className="space-y-6 border-l-2 border-border pl-6">
+                      <div>
+                        <div className="flex items-baseline gap-2 mb-1.5">
+                          <span className="text-xs font-semibold text-brand-text" aria-hidden="true">I</span>
+                          <span className="text-sm font-medium text-muted">Desafio</span>
+                        </div>
+                        <p className="text-sm text-secondary leading-relaxed">{work.problem}</p>
+                      </div>
+                      <div>
+                        <div className="flex items-baseline gap-2 mb-1.5">
+                          <span className="text-xs font-semibold text-brand-text" aria-hidden="true">II</span>
+                          <span className="text-sm font-medium text-muted">Arquitetura</span>
+                        </div>
+                        <p className="text-sm text-secondary leading-relaxed">{work.architecture}</p>
+                      </div>
+                      <div>
+                        <div className="flex items-baseline gap-2 mb-1.5">
+                          <span className="text-xs font-semibold text-brand-text" aria-hidden="true">III</span>
+                          <span className="text-sm font-medium text-muted">Resultado</span>
+                        </div>
+                        <p className="text-sm text-secondary leading-relaxed">{work.outcome}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

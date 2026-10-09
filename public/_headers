@@ -1,0 +1,32 @@
+# Cloudflare Workers Static Assets headers — this file is the authoritative
+# mechanism for response headers on this project's actual deployment target.
+# Static files under /public/ are served directly by Cloudflare's Assets
+# binding (see wrangler.jsonc), which bypasses the Next.js/Worker request
+# pipeline entirely — next.config.ts's headers() cannot reach these paths
+# in production. It's kept in parallel only for local `next start`/Node
+# hosting, where this file has no effect.
+# https://developers.cloudflare.com/workers/static-assets/headers
+# https://opennext.js.org/cloudflare/caching#static-assets-caching
+
+# Next.js's own build output is content-hashed (the filename changes
+# whenever the content does), so it's safe to cache for a year.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Official ByteIQ brand assets (logos, icons, patterns) are NOT
+# content-hashed — the URL stays the same if a file is ever replaced.
+# Deliberately NOT immutable/long-lived: a moderate cache with
+# stale-while-revalidate gets most of the caching benefit while keeping
+# the max staleness window to one day of hard freshness, one week before
+# a background revalidation is forced either way.
+/brand/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Baseline security headers, every response.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=15552000
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'

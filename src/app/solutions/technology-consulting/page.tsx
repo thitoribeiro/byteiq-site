@@ -4,6 +4,8 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { Reveal } from "@/components/motion/Reveal";
+import { SolutionDiagram } from "@/components/solutions/SolutionDiagram";
 
 const TITLE = "Technology Consulting & Architecture";
 const DESCRIPTION =
@@ -59,15 +61,20 @@ export default function TechnologyConsultingSolutionPage() {
           className="mb-4"
         />
 
-        <div className="pb-12 border-b border-border">
-          <span className="text-overline text-muted">Technical Advisory &amp; Architecture</span>
-          <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
-            Technology Consulting &amp; Arquitetura.
-          </h1>
-          <p className="mt-4 text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">
-            Apoiamos lideranças técnicas e executivas na tomada de decisões arquiteturais críticas,
-            escolha de tecnologias, modernização de sistemas legados e estratégia de engenharia de IA.
-          </p>
+        <div className="pb-12 border-b border-border lg:grid lg:grid-cols-12 lg:gap-10 lg:items-center">
+          <div className="lg:col-span-7">
+            <span className="text-overline text-muted">Technical Advisory &amp; Architecture</span>
+            <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
+              Technology Consulting &amp; Arquitetura.
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">
+              Apoiamos lideranças técnicas e executivas na tomada de decisões arquiteturais críticas,
+              escolha de tecnologias, modernização de sistemas legados e estratégia de engenharia de IA.
+            </p>
+          </div>
+          <Reveal variant="up" delay={120} className="hidden lg:block lg:col-span-5">
+            <SolutionDiagram kind="arc" accent="brand" labels={["Auditoria", "Diagnóstico", "Plano", "Execução"]} />
+          </Reveal>
         </div>
 
         <div className="py-14 border-b border-border space-y-8">

@@ -1,5 +1,6 @@
 import React from "react";
 import { Reveal } from "@/components/motion/Reveal";
+import { PositioningTriad } from "@/components/home/PositioningTriad";
 
 export function PositioningTree() {
   return (
@@ -24,6 +25,10 @@ export function PositioningTree() {
             </p>
           </Reveal>
         </div>
+
+        <Reveal variant="up" delay={200} className="mt-20 sm:mt-24">
+          <PositioningTriad />
+        </Reveal>
       </div>
     </section>
   );

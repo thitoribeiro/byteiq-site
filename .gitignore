@@ -44,3 +44,25 @@ next-env.d.ts
 # Cloudflare / OpenNext generated files
 .open-next/
 .wrangler/
+
+# AI coding-assistant tooling scaffolding (skills/agents installed by the
+# editor, not ByteIQ application content).
+.agent/
+.cursor/
+.gemini/
+
+# .claude/ — ignore everything by default (local settings, agents, and the
+# generic/third-party skills that ship with or can be installed separately
+# into the editor), then selectively re-allow only what's genuinely
+# ByteIQ-specific: the byteiq-brand skill and its supporting files. None of
+# the current agents under .claude/agents/ are ByteIQ-specific (checked),
+# so that directory stays fully ignored; revisit if that changes.
+.claude/*
+!.claude/skills
+.claude/skills/*
+!.claude/skills/byteiq-brand
+# Defense-in-depth: never track generated binaries/caches even inside an
+# allowed skill directory.
+.claude/**/scripts/bin/
+.claude/**/__pycache__/
+.claude/**/*.pyc

@@ -4,6 +4,8 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { Reveal } from "@/components/motion/Reveal";
+import { SolutionDiagram } from "@/components/solutions/SolutionDiagram";
 
 const TITLE = "Quality Engineering & Observability";
 const DESCRIPTION =
@@ -59,15 +61,20 @@ export default function QualityEngineeringSolutionPage() {
           className="mb-4"
         />
 
-        <div className="pb-12 border-b border-border">
-          <span className="text-overline text-muted">Reliability, Testing &amp; Observability</span>
-          <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
-            Quality Engineering &amp; Observabilidade.
-          </h1>
-          <p className="mt-4 text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">
-            Qualidade é um princípio contínuo. Implementamos automação de testes, validação
-            determinística de modelos de IA, telemetria proativa e pipelines de entrega contínua.
-          </p>
+        <div className="pb-12 border-b border-border lg:grid lg:grid-cols-12 lg:gap-10 lg:items-center">
+          <div className="lg:col-span-7">
+            <span className="text-overline text-muted">Reliability, Testing &amp; Observability</span>
+            <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
+              Quality Engineering &amp; Observabilidade.
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">
+              Qualidade é um princípio contínuo. Implementamos automação de testes, validação
+              determinística de modelos de IA, telemetria proativa e pipelines de entrega contínua.
+            </p>
+          </div>
+          <Reveal variant="up" delay={120} className="hidden lg:block lg:col-span-5">
+            <SolutionDiagram kind="pipeline" accent="brand" labels={["Código", "Testes", "Deploy", "Monitor"]} />
+          </Reveal>
         </div>
 
         <div className="py-14 border-b border-border space-y-8">
