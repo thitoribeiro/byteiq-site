@@ -6,6 +6,7 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { Reveal } from "@/components/motion/Reveal";
 
 const TITLE = "Soluções de Engenharia";
 const DESCRIPTION =
@@ -115,37 +116,47 @@ export default function SolutionsHubPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-14">
+        <div className="border-t border-border">
           {solutionsList.map((sol, index) => (
-            <div key={sol.slug} className="border-t border-border pt-8">
-              <span className="text-2xl font-semibold tracking-tight text-brand-text">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div className="mt-4 text-sm text-muted">{sol.category}</div>
-              <h2 className="mt-1 text-xl font-semibold text-primary tracking-tight">{sol.title}</h2>
-              <p className="mt-3 text-sm text-secondary leading-relaxed">{sol.desc}</p>
+            <Reveal key={sol.slug} variant="up" delay={index * 80} className="border-b border-border py-10 sm:py-12">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10">
+                <div className="lg:col-span-1">
+                  <span className="text-xl font-medium tracking-tight text-brand-text">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
 
-              <ul className="mt-5 space-y-1.5">
-                {sol.deliverables.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-secondary">
-                    <span className="w-1 h-1 rounded-full bg-muted mt-2 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+                <div className="lg:col-span-4">
+                  <div className="text-sm text-muted">{sol.category}</div>
+                  <h2 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-primary">{sol.title}</h2>
+                </div>
 
-              <Link
-                href={sol.href}
-                className="link-underline group mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-text hover:text-brand-hover transition-colors"
-              >
-                <span>Ver documentação da solução</span>
-                <Icon
-                  name="arrow-right"
-                  size={14}
-                  className="transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:group-hover:translate-x-0"
-                />
-              </Link>
-            </div>
+                <div className="lg:col-span-7">
+                  <p className="text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">{sol.desc}</p>
+
+                  <ul className="mt-5 space-y-1.5">
+                    {sol.deliverables.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-secondary">
+                        <span className="w-1 h-1 rounded-full bg-muted mt-2 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    href={sol.href}
+                    className="link-underline group mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-text hover:text-brand-hover transition-colors"
+                  >
+                    <span>Ver documentação da solução</span>
+                    <Icon
+                      name="arrow-right"
+                      size={14}
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:group-hover:translate-x-0"
+                    />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
           ))}
         </div>
 

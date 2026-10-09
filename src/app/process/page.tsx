@@ -4,6 +4,7 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { ScrollRail } from "@/components/layout/ScrollRail";
 
 const TITLE = "Metodologia & Processo de Engenharia";
 const DESCRIPTION =
@@ -93,7 +94,7 @@ const fullProcessSteps = [
 
 export default function ProcessPage() {
   return (
-    <div className="relative overflow-hidden pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
+    <div className="relative z-0 overflow-hidden pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
       <div
         className="absolute inset-0 -z-10 opacity-[0.05]"
         style={{
@@ -117,40 +118,47 @@ export default function ProcessPage() {
           </p>
         </div>
 
-        <div className="space-y-16">
-          {fullProcessSteps.map((step) => (
-            <div key={step.phase} className="border-t border-border pt-8 space-y-5">
-              <div className="flex items-baseline gap-4">
-                <span className="text-sm text-muted">Fase {step.phase}</span>
-                <h2 className="text-xl sm:text-2xl font-semibold text-primary tracking-tight">
-                  {step.title} — {step.headline}
-                </h2>
-              </div>
+        <div className="lg:grid lg:grid-cols-12 lg:gap-10">
+          <ScrollRail
+            items={fullProcessSteps.map((step) => ({ id: `phase-${step.phase}`, label: step.title }))}
+            className="lg:col-span-2"
+          />
 
-              <p className="text-sm sm:text-base text-secondary leading-relaxed">
-                <strong className="text-primary font-medium">Objetivo:</strong> {step.objective}
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-2">
-                <div className="md:col-span-7 space-y-2">
-                  <div className="text-sm font-medium text-muted">Atividades de Engenharia</div>
-                  <ul className="space-y-1.5">
-                    {step.activities.map((act) => (
-                      <li key={act} className="flex items-start gap-2.5 text-sm text-secondary">
-                        <span className="w-1 h-1 rounded-full bg-muted mt-2 shrink-0" />
-                        <span>{act}</span>
-                      </li>
-                    ))}
-                  </ul>
+          <div className="lg:col-span-10 space-y-16">
+            {fullProcessSteps.map((step) => (
+              <div key={step.phase} id={`phase-${step.phase}`} className="scroll-mt-32 border-t border-border pt-8 space-y-5">
+                <div className="flex items-baseline gap-4">
+                  <span className="text-sm text-muted shrink-0 whitespace-nowrap">Fase {step.phase}</span>
+                  <h2 className="text-xl sm:text-2xl font-semibold text-primary tracking-tight">
+                    {step.title} — {step.headline}
+                  </h2>
                 </div>
 
-                <div className="md:col-span-5">
-                  <div className="text-sm font-medium text-muted mb-1.5">Artefatos Entregues</div>
-                  <p className="text-sm text-secondary leading-relaxed">{step.artifacts}</p>
+                <p className="text-sm sm:text-base text-secondary leading-relaxed">
+                  <strong className="text-primary font-medium">Objetivo:</strong> {step.objective}
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-2">
+                  <div className="md:col-span-7 space-y-2">
+                    <div className="text-sm font-medium text-muted">Atividades de Engenharia</div>
+                    <ul className="space-y-1.5">
+                      {step.activities.map((act) => (
+                        <li key={act} className="flex items-start gap-2.5 text-sm text-secondary">
+                          <span className="w-1 h-1 rounded-full bg-muted mt-2 shrink-0" />
+                          <span>{act}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="md:col-span-5">
+                    <div className="text-sm font-medium text-muted mb-1.5">Artefatos Entregues</div>
+                    <p className="text-sm text-secondary leading-relaxed">{step.artifacts}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <CTABanner

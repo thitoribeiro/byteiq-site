@@ -3,24 +3,25 @@ import Link from "next/link";
 import { Icon } from "@/components/brand/Icon";
 import { Reveal } from "@/components/motion/Reveal";
 
-const techTaxonomy = [
+const techDomains = [
   {
     category: "AI",
     items: ["LangChain / LangGraph", "OpenAI / Claude / Gemini", "Pinecone / pgvector", "LlamaIndex", "Ollama / vLLM"],
+    accent: "border-ai-border",
   },
   {
     category: "Software",
     items: ["Node.js / TypeScript", "Python / FastAPI", "Go", "Next.js / React", "React Native / Flutter"],
+    accent: "border-border-strong",
   },
   {
     category: "Data & Cloud",
     items: ["PostgreSQL", "Redis", "AWS / GCP", "Docker & Kubernetes", "Terraform"],
+    accent: "border-data",
   },
-  {
-    category: "Quality",
-    items: ["Playwright & Jest", "OpenTelemetry", "Prometheus & Grafana", "GitHub Actions"],
-  },
-];
+] as const;
+
+const qualityItems = ["Playwright & Jest", "OpenTelemetry", "Prometheus & Grafana", "GitHub Actions"];
 
 export function TechnologiesSection() {
   return (
@@ -37,20 +38,60 @@ export function TechnologiesSection() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {techTaxonomy.map((group, idx) => (
-            <Reveal key={group.category} variant="up-sm" delay={80 + idx * 60}>
-              <div className="text-sm font-semibold text-primary pb-3 border-b border-border mb-4">
-                {group.category}
-              </div>
-              <ul className="space-y-2.5">
-                {group.items.map((item) => (
-                  <li key={item} className="text-sm text-secondary">{item}</li>
-                ))}
-              </ul>
-            </Reveal>
-          ))}
+        <div className="relative">
+          {/* Official ByteIQ "data flow" pattern, used here at real visual
+              weight to represent interconnection between domains — not a
+              dependency-order diagram. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-40 opacity-[0.14] pointer-events-none"
+            style={{
+              backgroundImage: "url(/brand/data-flow-light.svg)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+
+          <div className="relative grid grid-cols-1 sm:grid-cols-3 gap-10 lg:gap-8">
+            {techDomains.map((group, idx) => (
+              <Reveal key={group.category} variant="left" delay={80 + idx * 80}>
+                <div className={`pl-5 border-l-2 ${group.accent}`}>
+                  <div className="text-sm font-semibold text-primary pb-3 border-b border-border mb-4">
+                    {group.category}
+                  </div>
+                  <ul className="space-y-2.5">
+                    {group.items.map((item) => (
+                      <li key={item} className="text-sm text-secondary">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
+
+        <Reveal variant="up-sm" delay={320}>
+          <p className="mt-8 text-sm text-muted max-w-2xl">
+            Como organizamos nosso stack em projetos reais — não um padrão universal, mas o conjunto
+            que sustenta a maior parte do nosso trabalho.
+          </p>
+        </Reveal>
+
+        <Reveal variant="up-sm" delay={380} className="mt-14">
+          <div className="pt-6 border-t-2 border-dashed border-brand text-center">
+            <span className="text-sm font-semibold text-brand-text">
+              Qualidade &amp; Observabilidade — em todas as camadas
+            </span>
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-sm text-muted">
+              {qualityItems.map((item, i) => (
+                <React.Fragment key={item}>
+                  {i > 0 && <span aria-hidden="true">·</span>}
+                  <span>{item}</span>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
         <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <span className="text-sm text-secondary">

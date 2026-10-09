@@ -5,6 +5,7 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { ScrollRail } from "@/components/layout/ScrollRail";
 
 const TITLE = "Estudos de Casos de Engenharia";
 const DESCRIPTION =
@@ -107,61 +108,81 @@ export default function CasesPage() {
           </p>
         </div>
 
-        <div className="space-y-20">
-          {caseStudies.map((item) => (
-            <div key={item.code} className="border-t border-border pt-10">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-sm font-medium text-brand-text">{item.tag}</span>
-                <span className="text-sm text-muted">Caso {item.code}</span>
-              </div>
+        <div className="space-y-24">
+          {caseStudies.map((item) => {
+            const sectionId = (slug: string) => `case-${item.code}-${slug}`;
+            const railItems = [
+              { id: sectionId("contexto"), label: "Contexto" },
+              { id: sectionId("desafio"), label: "Desafio" },
+              { id: sectionId("decisoes"), label: "Decisões" },
+              { id: sectionId("solucao"), label: "Solução" },
+              { id: sectionId("resultado"), label: "Resultado" },
+              { id: sectionId("principio"), label: "Princípio" },
+            ];
 
-              <h2 className="text-2xl sm:text-3xl font-semibold text-primary tracking-tight mb-8">
-                {item.title}
-              </h2>
+            return (
+              <div key={item.code} className="border-t border-border pt-10">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-sm font-medium text-brand-text">{item.tag}</span>
+                  <span className="text-sm text-muted">Caso {item.code}</span>
+                </div>
 
-              <div className="space-y-8">
-                <div>
-                  <div className="text-sm font-medium text-muted mb-1.5">01 — Contexto</div>
-                  <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.context}</p>
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-muted mb-1.5">02 — Desafio</div>
-                  <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.challenge}</p>
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-muted mb-1.5">03 — Decisões</div>
-                  <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.decisions}</p>
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-muted mb-1.5">04 — Solução &amp; Engenharia</div>
-                  <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.solution}</p>
-                  <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm text-muted">
-                    {item.techStack.map((tech, techIndex) => (
-                      <React.Fragment key={tech}>
-                        {techIndex > 0 && <span aria-hidden="true">·</span>}
-                        <span>{tech}</span>
-                      </React.Fragment>
-                    ))}
+                <h2 className="text-2xl sm:text-3xl font-semibold text-primary tracking-tight mb-8 max-w-3xl">
+                  {item.title}
+                </h2>
+
+                <div className="lg:grid lg:grid-cols-12 lg:gap-10">
+                  <ScrollRail
+                    items={railItems}
+                    className="lg:col-span-2"
+                    ariaLabel={`Navegação da seção — Caso ${item.code}`}
+                  />
+
+                  <div className="lg:col-span-10 space-y-8">
+                    <div id={sectionId("contexto")} className="scroll-mt-32">
+                      <div className="text-sm font-medium text-muted mb-1.5">01 — Contexto</div>
+                      <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.context}</p>
+                    </div>
+                    <div id={sectionId("desafio")} className="scroll-mt-32">
+                      <div className="text-sm font-medium text-muted mb-1.5">02 — Desafio</div>
+                      <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.challenge}</p>
+                    </div>
+                    <div id={sectionId("decisoes")} className="scroll-mt-32">
+                      <div className="text-sm font-medium text-muted mb-1.5">03 — Decisões</div>
+                      <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.decisions}</p>
+                    </div>
+                    <div id={sectionId("solucao")} className="scroll-mt-32">
+                      <div className="text-sm font-medium text-muted mb-1.5">04 — Solução &amp; Engenharia</div>
+                      <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.solution}</p>
+                      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                        {item.techStack.map((tech) => (
+                          <div key={tech} className="flex items-center gap-1.5">
+                            <span className="h-1.5 w-1.5 rounded-full bg-brand shrink-0" aria-hidden="true" />
+                            <span className="text-sm text-secondary">{tech}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div id={sectionId("resultado")} className="scroll-mt-32">
+                      <div className="text-sm font-medium text-muted mb-2">05 — Resultado</div>
+                      <ul className="space-y-1.5">
+                        {item.results.map((res) => (
+                          <li key={res} className="flex items-start gap-2 text-sm sm:text-base text-secondary">
+                            <Icon name="check" size={16} className="text-brand shrink-0 mt-0.5" />
+                            <span>{res}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div id={sectionId("principio")} className="scroll-mt-32 pt-6 border-t border-border">
+                      <div className="text-sm font-medium text-muted mb-1.5">06 — O que este trabalho reforça</div>
+                      <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.principle}</p>
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div className="text-sm font-medium text-muted mb-2">05 — Resultado</div>
-                  <ul className="space-y-1.5">
-                    {item.results.map((res) => (
-                      <li key={res} className="flex items-start gap-2 text-sm sm:text-base text-secondary">
-                        <Icon name="check" size={16} className="text-brand shrink-0 mt-0.5" />
-                        <span>{res}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="pt-6 border-t border-border">
-                  <div className="text-sm font-medium text-muted mb-1.5">06 — O que este trabalho reforça</div>
-                  <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">{item.principle}</p>
-                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <CTABanner

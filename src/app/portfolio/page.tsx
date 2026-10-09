@@ -4,6 +4,9 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { cn } from "@/lib/utils";
+
+const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
 
 const TITLE = "Portfólio de Sistemas & Produtos";
 const DESCRIPTION =
@@ -96,39 +99,51 @@ export default function PortfolioPage() {
         </div>
 
         <div>
-          {portfolioProjects.map((proj) => (
-            <div key={proj.id} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 py-12 border-t border-border first:border-t-0">
-              <div className="lg:col-span-2">
-                <span className="text-3xl font-semibold tracking-tight text-brand-text">{proj.id}</span>
-              </div>
+          {portfolioProjects.map((proj, idx) => {
+            const reversed = idx % 2 === 1;
+            return (
+              <div key={proj.id} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 py-12 border-t border-border first:border-t-0">
+                <div className="lg:col-span-2">
+                  <span className="text-3xl font-semibold tracking-tight text-brand-text">{proj.id}</span>
+                </div>
 
-              <div className="lg:col-span-10">
-                <span className="text-sm font-medium text-muted">{proj.tag}</span>
-                <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-primary tracking-tight text-balance">
-                  {proj.title}
-                </h2>
-                <p className="mt-4 text-base text-secondary leading-relaxed max-w-2xl">{proj.scope}</p>
+                <div className="lg:col-span-10">
+                  <span className="text-sm font-medium text-muted">{proj.tag}</span>
+                  <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-primary tracking-tight text-balance">
+                    {proj.title}
+                  </h2>
+                  <p className="mt-4 text-base text-secondary leading-relaxed max-w-2xl">{proj.scope}</p>
 
-                <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
-                  {proj.capabilities.map((cap) => (
-                    <li key={cap} className="flex items-start gap-2 text-sm text-secondary">
-                      <span className="w-1 h-1 rounded-full bg-muted mt-2 shrink-0" />
-                      <span>{cap}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+                    <div className={cn("lg:col-span-7", reversed && "lg:order-2")}>
+                      <div className="space-y-3 border-l-2 border-border pl-5">
+                        {proj.capabilities.map((cap, capIndex) => (
+                          <div key={cap} className="flex items-baseline gap-2.5">
+                            <span className="text-xs font-semibold text-brand-text shrink-0" aria-hidden="true">
+                              {romanNumerals[capIndex]}
+                            </span>
+                            <span className="text-sm text-secondary leading-relaxed">{cap}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
 
-                <div className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm text-muted">
-                  {proj.stack.map((tech, techIndex) => (
-                    <React.Fragment key={tech}>
-                      {techIndex > 0 && <span aria-hidden="true">·</span>}
-                      <span>{tech}</span>
-                    </React.Fragment>
-                  ))}
+                    <div className={cn("lg:col-span-5", reversed && "lg:order-1")}>
+                      <div className="text-sm font-medium text-muted mb-2">Componentes</div>
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                        {proj.stack.map((tech) => (
+                          <div key={tech} className="flex items-center gap-1.5">
+                            <span className="h-1.5 w-1.5 rounded-full bg-brand shrink-0" aria-hidden="true" />
+                            <span className="text-sm text-secondary">{tech}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <CTABanner

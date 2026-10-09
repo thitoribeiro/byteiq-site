@@ -80,22 +80,26 @@ export function CapabilitiesSection() {
                 key={cap.id}
                 variant="up"
                 delay={index * 100}
-                className="border-b border-border py-10 sm:py-12"
+                className="group border-b border-border py-10 sm:py-12"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10">
-                  <div className="lg:col-span-1">
+                  <div className="relative lg:col-span-1">
                     <span
                       className={cn(
-                        "text-2xl font-semibold tracking-tight",
+                        "text-xl font-medium tracking-tight",
                         cap.accent === "ai" ? "text-ai-text" : "text-brand-text"
                       )}
                     >
                       {cap.number}
                     </span>
+                    <span
+                      aria-hidden="true"
+                      className="capability-trace hidden lg:block absolute top-1/2 left-full h-px w-10 bg-border-strong"
+                    />
                   </div>
 
                   <div className="lg:col-span-4">
-                    <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-primary">
+                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-primary">
                       {cap.title}
                     </h3>
                   </div>
@@ -121,16 +125,16 @@ export function CapabilitiesSection() {
 
                     <div
                       className={cn(
-                        "mt-4 flex-wrap items-center gap-x-2 gap-y-1.5 text-sm text-muted",
+                        "mt-4 flex-wrap items-center gap-x-4 gap-y-2",
                         isOpen ? "flex" : "hidden",
                         "lg:flex"
                       )}
                     >
-                      {cap.tags.map((tag, tagIndex) => (
-                        <React.Fragment key={tag}>
-                          {tagIndex > 0 && <span aria-hidden="true">·</span>}
-                          <span>{tag}</span>
-                        </React.Fragment>
+                      {cap.tags.map((tag) => (
+                        <div key={tag} className="flex items-center gap-1.5">
+                          <span className="h-1.5 w-1.5 rounded-full bg-border-strong shrink-0" aria-hidden="true" />
+                          <span className="text-xs font-medium text-muted">{tag}</span>
+                        </div>
                       ))}
                     </div>
                   </div>

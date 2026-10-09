@@ -4,6 +4,7 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { cn } from "@/lib/utils";
 
 const TITLE = "Stack de Tecnologias & Engenharia";
 const DESCRIPTION =
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 const fullTechMatrix = [
   {
     category: "AI & Model Orchestration",
+    slug: "ai",
     code: "01",
     description: "Ferramentas para construção de agentes autônomos, pipelines RAG e integração determinística de LLMs.",
     items: [
@@ -38,6 +40,7 @@ const fullTechMatrix = [
   },
   {
     category: "Backend & Systems Architecture",
+    slug: "backend",
     code: "02",
     description: "Linguagens e runtimes de alta performance para microsserviços, APIs e sistemas orientados a eventos.",
     items: [
@@ -50,6 +53,7 @@ const fullTechMatrix = [
   },
   {
     category: "Frontend, Mobile & Interfaces",
+    slug: "frontend",
     code: "03",
     description: "Tecnologias modernas para interfaces web responsivas e aplicativos móveis.",
     items: [
@@ -61,6 +65,7 @@ const fullTechMatrix = [
   },
   {
     category: "Cloud, Infrastructure & DevOps",
+    slug: "cloud",
     code: "04",
     description: "Provisionamento seguro de ambientes em nuvem, conteinerização e entrega contínua.",
     items: [
@@ -73,6 +78,7 @@ const fullTechMatrix = [
   },
   {
     category: "Quality, Observability & Security",
+    slug: "quality",
     code: "05",
     description: "Instrumentação para prevenção de regressões, monitoramento de latência e proteção de dados.",
     items: [
@@ -86,7 +92,7 @@ const fullTechMatrix = [
 
 export default function TechnologiesPage() {
   return (
-    <div className="relative overflow-hidden pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
+    <div className="relative z-0 overflow-hidden pt-48 pb-24 sm:pt-56 sm:pb-32 bg-bg min-h-screen">
       <div
         className="absolute inset-0 -z-10 opacity-[0.05]"
         style={{
@@ -97,10 +103,19 @@ export default function TechnologiesPage() {
         }}
         aria-hidden="true"
       />
+      <div
+        className="absolute inset-x-0 top-0 -z-10 h-[640px] opacity-[0.1]"
+        style={{
+          backgroundImage: "url(/brand/data-flow-light.svg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        aria-hidden="true"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumb items={[{ label: "ByteIQ", href: "/" }, { label: "Tecnologias" }]} className="mb-4" />
 
-        <div className="pb-12 border-b border-border mb-16">
+        <div className="pb-8 border-b border-border">
           <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
             Stack Tecnológico &amp; Critérios de Engenharia.
           </h1>
@@ -110,12 +125,40 @@ export default function TechnologiesPage() {
           </p>
         </div>
 
+        <nav aria-label="Categorias da stack" className="py-6 mb-10 border-b border-border">
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {fullTechMatrix.map((matrix) => (
+              <li key={matrix.slug}>
+                <a
+                  href={`#${matrix.slug}`}
+                  className={cn(
+                    "link-underline inline-flex items-baseline gap-1.5 text-sm transition-colors",
+                    matrix.slug === "ai" ? "text-ai-text hover:text-ai-text" : "text-secondary hover:text-primary"
+                  )}
+                >
+                  <span className="text-xs text-muted">{matrix.code}</span>
+                  <span>{matrix.category}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <div className="space-y-16">
           {fullTechMatrix.map((matrix) => (
-            <div key={matrix.code} className="border-t border-border pt-8 space-y-6">
+            <div
+              key={matrix.code}
+              id={matrix.slug}
+              className={cn(
+                "border-t pt-8 space-y-6 scroll-mt-32",
+                matrix.slug === "ai" ? "border-ai-border" : "border-border"
+              )}
+            >
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
                 <div>
-                  <span className="text-sm text-muted">{matrix.code}</span>
+                  <span className={cn("text-sm", matrix.slug === "ai" ? "text-ai-text" : "text-muted")}>
+                    {matrix.code}
+                  </span>
                   <h2 className="mt-1 text-xl sm:text-2xl font-semibold text-primary tracking-tight">
                     {matrix.category}
                   </h2>

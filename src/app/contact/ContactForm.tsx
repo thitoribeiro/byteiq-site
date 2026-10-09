@@ -13,7 +13,7 @@ const projectTypes = [
 ];
 
 const inputClass =
-  "w-full h-11 px-3.5 rounded-md bg-surface border border-border-strong text-sm text-primary placeholder:text-muted focus:outline-none focus:border-focus transition-colors";
+  "w-full h-11 px-3.5 rounded-md bg-surface border border-border-strong text-sm text-primary placeholder:text-muted focus:border-focus transition-colors";
 const inputErrorClass = "border-error focus:border-error";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -224,8 +224,8 @@ export function ContactForm() {
           placeholder="Descreva brevemente o sistema que deseja construir, integrações necessárias ou problemas de negócio a serem resolvidos..."
           className={
             fieldErrors.description
-              ? "w-full px-3.5 py-2.5 rounded-md bg-surface border border-error focus:border-error text-sm text-primary placeholder:text-muted focus:outline-none transition-colors resize-y"
-              : "w-full px-3.5 py-2.5 rounded-md bg-surface border border-border-strong text-sm text-primary placeholder:text-muted focus:outline-none focus:border-focus transition-colors resize-y"
+              ? "w-full px-3.5 py-2.5 rounded-md bg-surface border border-error focus:border-error text-sm text-primary placeholder:text-muted transition-colors resize-y"
+              : "w-full px-3.5 py-2.5 rounded-md bg-surface border border-border-strong text-sm text-primary placeholder:text-muted focus:border-focus transition-colors resize-y"
           }
           aria-invalid={Boolean(fieldErrors.description)}
           aria-describedby={fieldErrors.description ? "description-error" : undefined}

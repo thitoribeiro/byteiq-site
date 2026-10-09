@@ -5,6 +5,7 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { Icon } from "@/components/brand/Icon";
 
 const TITLE = "Sobre a ByteIQ";
 const DESCRIPTION =
@@ -76,17 +77,21 @@ export default function AboutPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumb items={[{ label: "ByteIQ", href: "/" }, { label: "Sobre" }]} className="mb-4" />
 
-        <div className="pb-12 border-b border-border mb-16">
-          <span className="text-overline text-muted">Digital Engineering Studio</span>
-          <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
-            Engenharia de Software &amp; Inteligência Artificial.
-          </h1>
-          <p className="mt-4 text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">
-            A <strong className="text-primary font-semibold">ByteIQ Tecnologia</strong> é uma empresa de
-            tecnologia orientada à engenharia. Projetamos e construímos sistemas de software
-            inteligentes, agentes autônomos, soluções de automação e plataformas digitais de alta
-            confiabilidade.
-          </p>
+        <div className="pb-12 border-b border-border mb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          <div className="lg:col-span-7">
+            <span className="text-overline text-muted">Digital Engineering Studio</span>
+            <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
+              Engenharia de Software &amp; Inteligência Artificial.
+            </h1>
+          </div>
+          <div className="lg:col-span-5 lg:pt-16">
+            <p className="text-base sm:text-lg text-secondary leading-relaxed">
+              A <strong className="text-primary font-semibold">ByteIQ Tecnologia</strong> é uma empresa de
+              tecnologia orientada à engenharia. Projetamos e construímos sistemas de software
+              inteligentes, agentes autônomos, soluções de automação e plataformas digitais de alta
+              confiabilidade.
+            </p>
+          </div>
         </div>
 
         <div className="pb-16 border-b border-border">
@@ -112,13 +117,13 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="mt-12 max-w-3xl">
+          <div className="mt-16 max-w-3xl">
             {studioPillars.map((pillar) => (
-              <div key={pillar.num} className="pt-6 pb-6 border-t border-border first:border-t-0">
+              <div key={pillar.num} className="pt-8 pb-8 border-t border-border first:border-t-0">
                 <div className="sm:flex sm:items-baseline sm:gap-8">
-                  <span className="text-sm text-muted shrink-0">{pillar.num}</span>
+                  <span className="text-xl font-medium text-brand-text shrink-0">{pillar.num}</span>
                   <div className="mt-2 sm:mt-0">
-                    <h3 className="text-lg font-semibold text-primary tracking-tight">{pillar.title}</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-primary tracking-tight">{pillar.title}</h3>
                     <p className="mt-2 text-sm sm:text-base text-secondary leading-relaxed">{pillar.desc}</p>
                   </div>
                 </div>
@@ -127,19 +132,37 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="py-16 border-b border-border space-y-8">
-          <h2 className="text-overline text-muted">Disciplinas Integradas</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {disciplines.map((disc) => (
+        <div className="py-16 border-b border-border">
+          <h2 className="text-overline text-muted mb-8">Disciplinas Integradas</h2>
+          <div className="border-t border-border">
+            {disciplines.map((disc, index) => (
               <Link
                 key={disc.title}
                 href={disc.href}
-                className="group space-y-1.5 link-underline"
+                className="group grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-10 items-baseline border-b border-border py-6"
               >
-                <div className="text-sm font-semibold text-primary group-hover:text-brand-text transition-colors">
-                  {disc.title}
+                <div className="relative lg:col-span-1">
+                  <span className="text-xl font-medium text-brand-text">{String(index + 1).padStart(2, "0")}</span>
+                  <span
+                    aria-hidden="true"
+                    className="capability-trace hidden lg:block absolute top-1/2 left-full h-px w-10 bg-border-strong"
+                  />
                 </div>
-                <p className="text-sm text-secondary leading-relaxed">{disc.desc}</p>
+                <div className="lg:col-span-4">
+                  <span className="text-base font-semibold text-primary group-hover:text-brand-text transition-colors">
+                    {disc.title}
+                  </span>
+                </div>
+                <div className="lg:col-span-6">
+                  <p className="text-sm text-secondary leading-relaxed">{disc.desc}</p>
+                </div>
+                <div className="lg:col-span-1 lg:flex lg:justify-end">
+                  <Icon
+                    name="arrow-right"
+                    size={16}
+                    className="text-muted transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-brand-text motion-reduce:group-hover:translate-x-0"
+                  />
+                </div>
               </Link>
             ))}
           </div>

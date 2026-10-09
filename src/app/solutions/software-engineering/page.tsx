@@ -4,6 +4,8 @@ import { absoluteUrl } from "@/lib/site";
 import { OG_IMAGE } from "@/app/layout";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CTABanner } from "@/components/layout/CTABanner";
+import { Reveal } from "@/components/motion/Reveal";
+import { SolutionDiagram } from "@/components/solutions/SolutionDiagram";
 
 const TITLE = "Software & Web Applications";
 const DESCRIPTION =
@@ -59,15 +61,20 @@ export default function SoftwareEngineeringSolutionPage() {
           className="mb-4"
         />
 
-        <div className="pb-12 border-b border-border">
-          <span className="text-overline text-brand-text">Systems &amp; Product Architecture</span>
-          <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
-            Software Engineering &amp; Plataformas Web.
-          </h1>
-          <p className="mt-4 text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">
-            Engenharia de software focada em longevidade, modularidade e performance. Projetamos
-            backends resilientes, plataformas SaaS multi-tenant e interfaces web ultrarrápidas.
-          </p>
+        <div className="pb-12 border-b border-border lg:grid lg:grid-cols-12 lg:gap-10 lg:items-center">
+          <div className="lg:col-span-7">
+            <span className="text-overline text-brand-text">Systems &amp; Product Architecture</span>
+            <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight text-primary text-balance">
+              Software Engineering &amp; Plataformas Web.
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">
+              Engenharia de software focada em longevidade, modularidade e performance. Projetamos
+              backends resilientes, plataformas SaaS multi-tenant e interfaces web ultrarrápidas.
+            </p>
+          </div>
+          <Reveal variant="up" delay={120} className="hidden lg:block lg:col-span-5">
+            <SolutionDiagram kind="stack" accent="brand" labels={["Frontend", "Backend", "Mobile"]} />
+          </Reveal>
         </div>
 
         <div className="py-14 border-b border-border space-y-8">
