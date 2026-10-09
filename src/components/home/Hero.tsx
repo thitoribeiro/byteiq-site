@@ -64,18 +64,18 @@ export function Hero() {
             style={{ animationDelay: "240ms" }}
           >
             <Link
-              href="/portfolio"
+              href="/contact"
               className="hero-cta group inline-flex items-center gap-2 h-12 px-6 bg-brand text-white text-sm font-medium rounded-md transition-all duration-200 hover:bg-brand-hover hover:-translate-y-0.5"
             >
-              <span>Explorar Nosso Trabalho</span>
+              <span>Iniciar uma Conversa</span>
               <Icon name="arrow-right" size={16} className="transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
 
             <Link
-              href="/contact"
+              href="/portfolio"
               className="hero-cta inline-flex items-center gap-2 h-12 px-6 bg-surface border border-border-strong text-primary text-sm font-medium rounded-md transition-all duration-200 hover:bg-bg-subtle hover:-translate-y-0.5"
             >
-              <span>Iniciar uma Conversa</span>
+              <span>Explorar Nosso Trabalho</span>
             </Link>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { Icon } from "@/components/brand/Icon";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
@@ -63,6 +64,12 @@ export function CapabilitiesSection() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-primary text-balance">
             O que construímos
           </h2>
+          <p className="mt-4 text-base text-secondary leading-relaxed">
+            Quatro frentes centrais do nosso trabalho.{" "}
+            <Link href="/solutions" className="link-underline text-brand-text font-medium">
+              Ver todas as soluções
+            </Link>
+          </p>
         </Reveal>
 
         <div className="border-t border-border">

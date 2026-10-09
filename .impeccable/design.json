@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T00:00:00Z",
+  "title": "Design System: ByteIQ",
+  "extensions": {
+    "colorMeta": {
+      "byte-blue": {
+        "role": "primary",
+        "displayName": "Byte Blue",
+        "canonical": "#1769E0",
+        "tonalRamp": ["#0B2247", "#124491", "#1354B5", "#1769E0", "#2F79E4", "#4C8CEB", "#86B0F6", "#EDF4FF"]
+      },
+      "deep-navy": {
+        "role": "neutral",
+        "displayName": "Deep Navy",
+        "canonical": "#10243E",
+        "tonalRamp": ["#0A0F1C", "#10243E", "#1B3555", "#274669", "#3A5A85", "#5A78A0", "#8AA2C2", "#F0F4F9"]
+      },
+      "electric-cyan": {
+        "role": "tertiary",
+        "displayName": "Electric Cyan",
+        "canonical": "#13B8D1",
+        "tonalRamp": ["#0E505E", "#0C7C8F", "#0E9BB2", "#13B8D1", "#2DC6DD", "#5CD6E7", "#94E5F0", "#E8FAFD"]
+      },
+      "ai-violet": {
+        "role": "secondary",
+        "displayName": "AI Violet",
+        "canonical": "#7257E8",
+        "tonalRamp": ["#2F2369", "#4B34AB", "#5D42D0", "#7257E8", "#9581F0", "#B5A5F6", "#D3C9FB", "#F3F0FE"]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#4B5A70",
+        "tonalRamp": ["#182535", "#344257", "#4B5A70", "#5F6B80", "#8E9AAE", "#BCC6D4", "#D9E0EA", "#F7F9FC"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only — the one place the system goes this large." },
+      "headline": { "displayName": "Headline", "purpose": "Page H1s and major section H2s." },
+      "title": { "displayName": "Title", "purpose": "Sub-section headings, numbered-list item titles, component titles." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy, capped to a comfortable Portuguese line length." },
+      "label": { "displayName": "Overline Label", "purpose": "The one sanctioned uppercase/tracked treatment — eyebrow labels above a headline, used sparingly." }
+    },
+    "shadows": [
+      { "name": "e1", "value": "0 1px 2px rgba(16, 36, 62, 0.06)", "purpose": "Reserved lightest tier — no current caller." },
+      { "name": "e2", "value": "0 1px 3px rgba(16, 36, 62, 0.08), 0 1px 2px rgba(16, 36, 62, 0.04)", "purpose": "Reserved — no current caller." },
+      { "name": "e3", "value": "0 4px 12px rgba(16, 36, 62, 0.08), 0 2px 4px rgba(16, 36, 62, 0.04)", "purpose": "The mega-menu dropdown's floating panel — the system's one live shadow use." },
+      { "name": "e4", "value": "0 12px 24px rgba(16, 36, 62, 0.10), 0 4px 8px rgba(16, 36, 62, 0.05)", "purpose": "Reserved heaviest tier — no current caller." }
+    ],
+    "motion": [
+      { "name": "interaction-fast", "value": "150ms ease-out", "purpose": "Quick micro-interactions." },
+      { "name": "interaction-normal", "value": "200ms ease-out", "purpose": "Default hover/press timing — buttons, links, nav." },
+      { "name": "interaction-slow", "value": "300ms ease-out", "purpose": "Slower interaction states." },
+      { "name": "reveal", "value": "600ms ease-out", "purpose": "Scroll-triggered opacity/translate reveal — deliberately slower than interaction timing, reads as editorial pacing." },
+      { "name": "hero-entrance", "value": "800ms cubic-bezier(0.2, 0, 0, 1)", "purpose": "Hero content/symbol entrance on mount." },
+      { "name": "hero-rotation-ease", "value": "220ms cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Smooths the B symbol's scroll-driven rotateY into a weighted, non-mechanical motion." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The only recurring action color — Byte Blue. 48px tall in the Hero, 44px in inner-page CTA banners, 40px in the nav.",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\"><span>Iniciar uma Conversa</span></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; background: #1769E0; color: #FFFFFF; font-weight: 500; font-size: 14px; border-radius: 8px; transition: background-color 200ms ease-out, translate 200ms ease-out; } .ds-btn-primary:hover { background: #1354B5; translate: 0 -2px; } .ds-btn-primary:active { translate: 0 0; } .ds-btn-primary:focus-visible { outline: 2px solid #1769E0; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ghost/outline variant — white fill, Hairline Strong border, Paper Subtle on hover instead of a color shift.",
+      "html": "<a href=\"#\" class=\"ds-btn-secondary\"><span>Explorar Nosso Trabalho</span></a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; height: 48px; padding: 0 24px; background: #FFFFFF; color: #10243E; font-weight: 500; font-size: 14px; border: 1px solid #7B879B; border-radius: 8px; transition: background-color 200ms ease-out, translate 200ms ease-out; } .ds-btn-secondary:hover { background: #F7F9FC; translate: 0 -2px; } .ds-btn-secondary:active { translate: 0 0; } .ds-btn-secondary:focus-visible { outline: 2px solid #1769E0; outline-offset: 2px; }"
+    },
+    {
+      "name": "Numbered Hairline Item",
+      "kind": "custom",
+      "refersTo": "numbered-hairline-item",
+      "description": "Signature list pattern. Replaces bordered cards for any list of 3+ comparable items — capabilities, principles, portfolio entries, process phases.",
+      "html": "<div class=\"ds-numbered-item\"><span class=\"ds-numbered-item__number\">01</span><div><h3 class=\"ds-numbered-item__title\">Produtos Digitais</h3><p class=\"ds-numbered-item__desc\">Plataformas SaaS, aplicações web e sistemas de negócio desenhados em torno de necessidades operacionais reais.</p></div></div>",
+      "css": ".ds-numbered-item { display: flex; align-items: flex-start; gap: 24px; padding-top: 24px; padding-bottom: 24px; border-top: 1px solid #D9E0EA; } .ds-numbered-item__number { font-size: 24px; font-weight: 600; color: #1354B5; flex-shrink: 0; } .ds-numbered-item__title { font-size: 20px; font-weight: 600; color: #10243E; letter-spacing: -0.01em; } .ds-numbered-item__desc { margin-top: 8px; font-size: 14px; line-height: 1.625; color: #4B5A70; }"
+    },
+    {
+      "name": "CTA Banner",
+      "kind": "card",
+      "refersTo": "cta-banner",
+      "description": "The contained block every inner page ends with — Paper Subtle fill, no border, no shadow, 16px radius.",
+      "html": "<div class=\"ds-cta-banner\"><div><h3 class=\"ds-cta-banner__title\">Tem um problema complexo?</h3><p class=\"ds-cta-banner__subtitle\">Vamos transformá-lo em algo que funciona.</p></div><a href=\"#\" class=\"ds-btn-primary\"><span>Iniciar uma Conversa</span></a></div>",
+      "css": ".ds-cta-banner { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 24px; padding: 32px 40px; background: #F7F9FC; border-radius: 16px; } @media (min-width: 640px) { .ds-cta-banner { flex-direction: row; } } .ds-cta-banner__title { font-size: 18px; font-weight: 600; color: #10243E; } .ds-cta-banner__subtitle { margin-top: 4px; font-size: 14px; color: #4B5A70; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Primary navigation link — underline expands from the left on hover, never a static underline or color-only state.",
+      "html": "<a href=\"#\" class=\"ds-nav-link\">Trabalho</a>",
+      "css": ".ds-nav-link { position: relative; padding: 8px 12px; font-size: 14px; color: #5F6B80; transition: color 200ms ease-out; } .ds-nav-link::after { content: \"\"; position: absolute; left: 12px; right: 100%; bottom: 2px; height: 1px; background: currentColor; transition: right 200ms ease-out; } .ds-nav-link:hover { color: #10243E; } .ds-nav-link:hover::after { right: 12px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blueprint Studio",
+    "overview": "ByteIQ's visual language borrows its grammar from technical drafting rather than from marketing design. A large number stands in for a plan reference (01, 02…), a hairline stands in for a ruled line, and a faint blueprint-pattern texture sits behind the Hero and a few deeper pages — the site reads as an engineering studio's working document, not a product showcase. The system is confirmed to reject neon, glow, cyberpunk aesthetics, glassmorphism, and generic \"AI startup\" visual clichés; these are settled rejections carried from the brand, not open stylistic choices for future work to revisit.\n\nVoice is precise, contained, confident, and editorial — the register of a serious technical publication, not a SaaS landing page. Site copy is Portuguese (pt-BR); body-copy containers are kept narrow so line length stays readable at that register. One typeface (Inter) carries the entire hierarchy through size and weight alone. Color is used with the same restraint: one blue carries almost all interactive weight, and the two reserved accents are locked to exactly one semantic meaning each.",
+    "keyCharacteristics": [
+      "Numbered hairline lists replace bordered cards as the default way to present 3+ comparable items.",
+      "Light institutional theme is the only theme for this marketing site; dark mode is reserved for dashboards/dev tools elsewhere, never here.",
+      "Byte Blue is the one color that carries interactive/action weight anywhere on the site. AI Violet and Electric Cyan are reserved accents, each locked to a single semantic domain.",
+      "The Hero's B symbol's scroll-driven 3D rotation, eased with a 220ms spring-free transition, is the system's one genuinely animated, proprietary signature.",
+      "Flat by default: hairlines and whitespace build hierarchy. Shadow is reserved for content that floats above the page."
+    ],
+    "rules": [
+      { "name": "The Reserved Accent Rule", "body": "AI Violet appears only where the subject is literally AI; Electric Cyan appears only where the subject is literally data, flow, or automation. Neither is ever used for decoration, emphasis, or variety outside its domain.", "section": "colors" },
+      { "name": "The One Voice Rule", "body": "Byte Blue is the only color asked to carry interactive weight. A second \"also clickable\" color is never introduced for variety.", "section": "colors" },
+      { "name": "The One Uppercase Rule", "body": ".text-overline is the only place the system turns on uppercase and letter-spacing. Headings and body copy never do, no matter how much emphasis a screen seems to want.", "section": "typography" },
+      { "name": "The Floating-Only Shadow Rule", "body": "A shadow means an element is overlaying the page, not resting on it. Nothing in the normal document flow — a card, a section, a button at rest — ever carries one.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use a number + hairline instead of a bordered card whenever presenting a list of three or more comparable items.",
+      "Do keep Byte Blue (#1769E0) as the only color carrying interactive/action weight across the site.",
+      "Do reserve AI Violet (#7257E8) exclusively for content that is literally about AI, and Electric Cyan (#13B8D1) exclusively for content that is literally about data, flow, or automation.",
+      "Do pair every hover/press transform with a motion-reduce: reset.",
+      "Do keep the B symbol's rotation scroll-driven — tied to user input, never a free-running animation loop.",
+      "Do state an absence (a missing metric, client, or testimonial) rather than filling it — see PRODUCT.md's Evidence on Hand."
+    ],
+    "donts": [
+      "Don't add a bordered-and-shadowed \"card\" as the default container — hairlines plus whitespace are this system's hierarchy tool.",
+      "Don't use AI Violet or Electric Cyan decoratively, even once, outside their reserved domains.",
+      "Don't introduce neon, glow, cyberpunk aesthetics, glassmorphism, or generic \"AI startup\" visual clichés — these are confirmed rejections of this brand, not open stylistic choices.",
+      "Don't give a card, section, or button at rest a shadow — shadow is reserved for content floating above the page.",
+      "Don't redesign, recolor, rotate, or distort the B symbol or logo; the official source of truth lives in the sibling byteiq-master-branding repository."
+    ]
+  }
+}
